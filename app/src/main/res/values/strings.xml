@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TugasAkhir</string>
+    <string name="pencarian_ayat_al_qur_an">Pencarian Ayat Al-Qur\'an</string>
+    <string name="mz_fajar_1167050110">Mz. Fajar 1167050110</string>
+    <string name="pencarian_ayat">Pencarian Ayat</string>
+    <string name="ucapkan_satu_ayat_penuh_untuk_pencarian_lebih_akurat">*Ucapkan satu ayat penuh untuk pencarian lebih akurat</string>
+    <string name="silahkan_lafalkan_ayat">Silahkan lafalkan ayat</string>
+    <string name="listening">Listening...</string>
+    <string name="menampilkan">Menampilkan hasil pencarian untuk :</string>
+    <string name="menampilkan1">Hasil Pencarian :</string>
+    <string name="menampilkan2">Mungkin Maksud Anda :</string>
+</resources>
