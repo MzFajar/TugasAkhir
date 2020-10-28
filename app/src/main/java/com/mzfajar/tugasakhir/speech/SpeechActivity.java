@@ -8,7 +8,6 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
 import android.os.Bundle;
 import android.speech.RecognitionListener;
@@ -21,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mzfajar.tugasakhir.R;
-import com.mzfajar.tugasakhir.database.DatabaseOpenHelper;
 import com.mzfajar.tugasakhir.levenshtein.PencarianActivity;
 
 import java.util.ArrayList;
@@ -50,7 +48,7 @@ public class SpeechActivity extends AppCompatActivity {
 
         final Intent speechRecognizerIntent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
         speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-SA");
+        speechRecognizerIntent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, "ar-ae");
 
         speechRecognizer.setRecognitionListener(new RecognitionListener() {
             @Override

@@ -49,6 +49,7 @@ public class mzActivity extends AppCompatActivity {
             super.onPostExecute(aVoid);
 
             startActivity(new Intent(mzActivity.this, SpeechActivity.class));
+            finish();
         }
     }
 }

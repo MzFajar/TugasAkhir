@@ -13,8 +13,16 @@ import java.io.OutputStream;
 public class DatabaseOpenHelper {
 
     private String DB_NAME = "";
-
     private Context context;
+
+    public static String SURAT = "surat";
+    public static String AYAT = "ayat";
+    public static String NAMA_SURA = "namaSura";
+    public static String TARGET = "target";
+    public static String TEXT = "text";
+    public static String TERJEMAH = "terjemah";
+    public static String LATIN = "latin";
+
 
     public DatabaseOpenHelper(Context context, String dbname) {
         this.context = context;
