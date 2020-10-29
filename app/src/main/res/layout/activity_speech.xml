@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E1D3B0"
-    tools:context=".speech.SpeechActivity">
+    tools:context=".menu.SpeechActivity">
 
     <TextView
         android:id="@+id/ucapkan_sat"

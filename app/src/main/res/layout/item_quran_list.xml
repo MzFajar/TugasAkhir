@@ -17,23 +17,32 @@
 
     <TextView
         android:id="@+id/tvItemAyat"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="60dp"
+        android:layout_height="19dp"
         android:text="TextView"
-        android:layout_marginLeft="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tvItemSurat"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tvItemTeks"
-        android:paddingVertical="8dp"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingVertical="8dp"
         android:text="TextView"
-        android:textAlignment="textEnd"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvItemAyat"
-        android:gravity="end" />
+        app:layout_constraintTop_toBottomOf="@+id/tvItemAyat" />
+
+    <TextView
+        android:id="@+id/tvItemJarak"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/tvItemAyat"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,19 +8,19 @@ public class QuranModel {
     private String target;
     private String text;
     private String terjemah;
-    private String latin;
+    private long distance;
 
     public QuranModel() {
     }
 
-    public QuranModel(long surat, String namaSura, long ayat, String target, String text, String terjemah, String latin) {
+    public QuranModel(long surat, String namaSura, long ayat, String target, String text, String terjemah, long distance) {
         this.surat = surat;
         this.namaSura = namaSura;
         this.target = target;
         this.ayat = ayat;
         this.text = text;
         this.terjemah = terjemah;
-        this.latin = latin;
+        this.distance = distance;
     }
 
     public long getSurat() {
@@ -67,11 +67,8 @@ public class QuranModel {
         this.terjemah = terjemah;
     }
 
-    public String getLatin() {
-        return latin;
-    }
+    public long getDistance() { return distance; }
 
-    public void setLatin(String latin) {
-        this.latin = latin;
-    }
+    public void setDistance(long distance) { this.distance = distance; }
+
 }

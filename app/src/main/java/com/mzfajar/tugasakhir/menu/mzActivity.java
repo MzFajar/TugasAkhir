@@ -2,24 +2,11 @@ package com.mzfajar.tugasakhir.menu;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.mzfajar.tugasakhir.R;
-import com.mzfajar.tugasakhir.database.DatabaseOpenHelper;
-import com.mzfajar.tugasakhir.speech.SpeechActivity;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 
 public class mzActivity extends AppCompatActivity {
 

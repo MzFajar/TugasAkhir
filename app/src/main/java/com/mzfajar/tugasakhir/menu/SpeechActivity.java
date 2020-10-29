@@ -1,4 +1,4 @@
-package com.mzfajar.tugasakhir.speech;
+package com.mzfajar.tugasakhir.menu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,7 +20,6 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.mzfajar.tugasakhir.R;
-import com.mzfajar.tugasakhir.levenshtein.PencarianActivity;
 
 import java.util.ArrayList;
 

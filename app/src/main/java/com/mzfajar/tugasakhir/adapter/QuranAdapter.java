@@ -38,18 +38,21 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
         private final TextView tvItemSurat;
         private final TextView tvItemAyat;
         private final TextView tvItemTeks;
+        private final TextView tvItemJarak;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvItemAyat = itemView.findViewById(R.id.tvItemAyat);
             tvItemTeks = itemView.findViewById(R.id.tvItemTeks);
             tvItemSurat = itemView.findViewById(R.id.tvItemSurat);
+            tvItemJarak = itemView.findViewById(R.id.tvItemJarak);
         }
 
         public void onBind(QuranModel quranModel){
             tvItemTeks.setText(quranModel.getText());
-            tvItemAyat.setText(String.valueOf(quranModel.getAyat()));
-            tvItemSurat.setText(quranModel.getNamaSura());
+            tvItemAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()));
+            tvItemJarak.setText(")(Distance : " + quranModel.getDistance() + ")");
+            tvItemSurat.setText("(" + quranModel.getNamaSura());
         }
     }
 }
