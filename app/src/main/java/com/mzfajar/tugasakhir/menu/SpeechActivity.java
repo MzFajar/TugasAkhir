@@ -133,5 +133,8 @@ public class SpeechActivity extends AppCompatActivity {
                 Toast.makeText(this,"Permission Granted", Toast.LENGTH_SHORT).show();
         }
     }
-    
+
+    public void tentang( View view ) {
+        startActivity(new Intent(SpeechActivity.this, TentangActivity.class));
+    }
 }

@@ -66,12 +66,11 @@ public class PencarianActivity extends AppCompatActivity {
                     quranModel.setSurat(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.SURAT)));
                     quranModel.setNamaSura(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.NAMA_SURA)));
                     quranModel.setAyat(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.AYAT)));
-                    //quranModel.setLatin(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.LATIN)));
                     quranModel.setTerjemah(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TERJEMAH)));
                     quranModel.setText(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TEXT)));
                     quranModel.setTarget(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TARGET)));
                     if(quranModel.getTarget() != null){
-                        long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget()) - 1;
+                        long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget());
                         quranModel.setDistance(distance);
                         if(distance <= 1){
                             //tvDistance.setText(distance);

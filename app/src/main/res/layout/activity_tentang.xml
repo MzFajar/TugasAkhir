@@ -4,6 +4,120 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#E1D3B0"
     tools:context=".menu.TentangActivity">
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="158dp"
+        android:layout_marginLeft="157dp"
+        android:layout_marginRight="158dp"
+        android:layout_marginStart="157dp"
+        android:layout_marginTop="40dp"
+        android:fontFamily="monospace"
+        android:text="Mz. Fajar"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="166dp"
+        android:layout_marginLeft="165dp"
+        android:layout_marginRight="166dp"
+        android:layout_marginStart="165dp"
+        android:layout_marginTop="9dp"
+        android:text="1167050110"
+        android:textColor="@color/colorBlack"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="98dp"
+        android:layout_marginLeft="98dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="30dp"
+        android:text="Tugas Akhir Teknik Informatika '16"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="102dp"
+        android:layout_marginLeft="102dp"
+        android:layout_marginRight="102dp"
+        android:layout_marginStart="102dp"
+        android:layout_marginTop="10dp"
+        android:text="UIN Sunan Gunung Djati Bandung"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="352dp"
+        android:layout_height="135dp"
+        android:layout_marginEnd="29dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginRight="29dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Implementasi Algoritma Levenshtein Distance Untuk Pencarian Ayat Suci Al-Qur’an Berbasis Android Melalui Pelafalan"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="213dp"
+        android:layout_height="236dp"
+        android:layout_marginEnd="98dp"
+        android:layout_marginLeft="97dp"
+        android:layout_marginRight="98dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="70dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/author" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="173dp"
+        android:layout_marginLeft="173dp"
+        android:layout_marginRight="173dp"
+        android:layout_marginStart="173dp"
+        android:layout_marginTop="28dp"
+        android:text="Tentang"
+        android:textColor="@color/colorBlack"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -71,11 +71,11 @@
 
     <TextView
         android:id="@+id/implementas"
-        android:layout_width="369dp"
-        android:layout_height="32dp"
+        android:layout_width="361dp"
+        android:layout_height="51dp"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="21dp"
         android:layout_marginLeft="21dp"
         android:layout_marginRight="21dp"

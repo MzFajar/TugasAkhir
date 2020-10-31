@@ -50,8 +50,8 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
 
         public void onBind(QuranModel quranModel){
             tvItemTeks.setText(quranModel.getText());
-            tvItemAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()));
-            tvItemJarak.setText(")(Distance : " + quranModel.getDistance() + ")");
+            tvItemAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()) + ")");
+            tvItemJarak.setText("(Distance : " + quranModel.getDistance() + ")");
             tvItemSurat.setText("(" + quranModel.getNamaSura());
         }
     }
