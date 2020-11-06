@@ -85,14 +85,10 @@ public class PencarianActivity extends AppCompatActivity {
                         // nilai distance
                         long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget());
                         quranModel.setDistance(distance);
-                        
                         if(distance <= 1){ // yang sama
-                            quranModel.setDistance(distance);
                             target(quranModel);
                             showResult(quranModel);
                         }else if(distance > 1 && distance < 10){ // yang hampir sama
-
-                            quranModel.setDistance(distance);
                             target(quranModel);
                             quranList.add(quranModel);
                         }

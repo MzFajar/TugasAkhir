@@ -9,6 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.mzfajar.tugasakhir.R;
 import com.mzfajar.tugasakhir.model.QuranModel;
+
+import java.util.Collections;
 import java.util.List;
 
 public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> {

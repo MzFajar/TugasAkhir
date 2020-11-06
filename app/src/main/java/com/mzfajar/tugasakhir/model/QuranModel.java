@@ -1,6 +1,7 @@
 package com.mzfajar.tugasakhir.model;
 
 import java.util.Collection;
+import java.util.Collections;
 
 public class QuranModel {
 
