@@ -1,5 +1,7 @@
 package com.mzfajar.tugasakhir.model;
 
+import java.util.Collection;
+
 public class QuranModel {
 
     private long surat;
@@ -9,11 +11,9 @@ public class QuranModel {
     private String text;
     private String terjemah;
     private long distance;
+    private long panjTar;
 
     public QuranModel() {
-    }
-
-    public QuranModel(long surat, String namaSura, long ayat, String target, String text, String terjemah, long distance) {
         this.surat = surat;
         this.namaSura = namaSura;
         this.target = target;
@@ -21,6 +21,7 @@ public class QuranModel {
         this.text = text;
         this.terjemah = terjemah;
         this.distance = distance;
+        this.panjTar = panjTar;
     }
 
     public long getSurat() {
@@ -69,6 +70,12 @@ public class QuranModel {
 
     public long getDistance() { return distance; }
 
-    public void setDistance(long distance) { this.distance = distance; }
+    public void setDistance(long distance) {
+        this.distance = distance;
+    }
+
+    public long getPanjTar() { return  panjTar; }
+
+    public void setPanjTar(long panjTar) { this.panjTar = panjTar; }
 
 }

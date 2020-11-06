@@ -39,6 +39,7 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
         private final TextView tvItemAyat;
         private final TextView tvItemTeks;
         private final TextView tvItemJarak;
+        private final TextView tvItemTarget;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -46,9 +47,11 @@ public class QuranAdapter extends RecyclerView.Adapter<QuranAdapter.ViewHolder> 
             tvItemTeks = itemView.findViewById(R.id.tvItemTeks);
             tvItemSurat = itemView.findViewById(R.id.tvItemSurat);
             tvItemJarak = itemView.findViewById(R.id.tvItemJarak);
+            tvItemTarget = itemView.findViewById(R.id.tvItemTarget);
         }
 
         public void onBind(QuranModel quranModel){
+            tvItemTarget.setText(quranModel.getTarget()+ "  :  " + quranModel.getPanjTar());
             tvItemTeks.setText(quranModel.getText());
             tvItemAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()) + ")");
             tvItemJarak.setText("(Distance : " + quranModel.getDistance() + ")");

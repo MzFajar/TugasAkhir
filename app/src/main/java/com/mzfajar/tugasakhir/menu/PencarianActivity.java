@@ -15,6 +15,8 @@ import com.mzfajar.tugasakhir.database.DatabaseOpenHelper;
 import com.mzfajar.tugasakhir.model.QuranModel;
 import com.mzfajar.tugasakhir.algoritma.LevenshteinDistance;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class PencarianActivity extends AppCompatActivity {
@@ -22,6 +24,7 @@ public class PencarianActivity extends AppCompatActivity {
     private String sumber;
     private SQLiteDatabase db;
     private RecyclerView rvQuran;
+    public long panjangSum;
 
     private TextView teks;
     private TextView tvNamaSurat;
@@ -29,7 +32,7 @@ public class PencarianActivity extends AppCompatActivity {
     private TextView tvTeks;
     private TextView tvTerjemahan;
     private TextView tvDistance;
-   // public Integer distance;
+    private TextView tvTarget;
 
     @Override
     protected void onCreate( Bundle savedInstanceState ) {
@@ -43,6 +46,7 @@ public class PencarianActivity extends AppCompatActivity {
         tvTeks = findViewById(R.id.tvTeks);
         tvDistance = findViewById(R.id.tvDistance);
         tvTerjemahan = findViewById(R.id.tvTerjemahan);
+        tvTarget = findViewById(R.id.tvTarget);
         rvQuran = findViewById(R.id.rvQuran);
         teks.setTypeface(Typeface.createFromAsset(getAssets(), "me_quran.ttf"));
         tvTeks.setTypeface(Typeface.createFromAsset(getAssets(), "me_quran.ttf"));
@@ -51,7 +55,15 @@ public class PencarianActivity extends AppCompatActivity {
         sumber = (bundle.getString("DataSaya"));
         getListDataQuran();
 
-        teks.setText(sumber);
+       // panjang sumber
+        int [] sum = new int[sumber.length()];
+        panjangSum = 0;
+        if(sum != null) {
+            for (int p = 1; p < sum.length; p++) {
+                panjangSum++;
+            }
+            teks.setText(panjangSum + "  :  " + sumber);
+        }
     }
 
     private void getListDataQuran(){
@@ -70,16 +82,20 @@ public class PencarianActivity extends AppCompatActivity {
                     quranModel.setText(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TEXT)));
                     quranModel.setTarget(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TARGET)));
                     if(quranModel.getTarget() != null){
+                        // nilai distance
                         long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget());
                         quranModel.setDistance(distance);
-                        if(distance <= 1){
-                            //tvDistance.setText(distance);
+                        
+                        if(distance <= 1){ // yang sama
+                            quranModel.setDistance(distance);
+                            target(quranModel);
                             showResult(quranModel);
-                        }else if(distance > 1 && distance <= 5){
-                           // tvNamaSurat.setText("Ayat Tidak Ditemukan");
+                        }else if(distance > 1 && distance < 10){ // yang hampir sama
+
+                            quranModel.setDistance(distance);
+                            target(quranModel);
                             quranList.add(quranModel);
-                        } //if(distance > 5)
-                           //noResult();
+                        }
                     }
                     cursor.moveToNext();
                 }while (!cursor.isAfterLast());
@@ -91,20 +107,26 @@ public class PencarianActivity extends AppCompatActivity {
                 }
             }
         }
-
         cursor.close();
+    }
+
+    private void target(QuranModel quranModel) {
+        long panjtar = 0;
+        if(quranModel.getTarget() != null) {
+            for (int j = 1; j < quranModel.getTarget().length(); j++) {
+                panjtar++;
+            }
+            quranModel.setPanjTar(panjtar);
+        }
     }
 
     private void showResult(QuranModel quranModel){
         tvTerjemahan.setText("Artinya : " + quranModel.getTerjemah());
         tvTeks.setText(quranModel.getText());
+        tvTarget.setText(quranModel.getTarget() + "  :  " + quranModel.getPanjTar());
         tvAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()) + ")");
         tvNamaSurat.setText("(" + quranModel.getNamaSura());
         tvDistance.setText("(Distance : " + quranModel.getDistance() + ")");
-    }
-
-    private void noResult(){
-        tvNamaSurat.setText("Ayat Tidak Ditemukan");
     }
 
     private void showRecyclerView(List<QuranModel> quranList){
