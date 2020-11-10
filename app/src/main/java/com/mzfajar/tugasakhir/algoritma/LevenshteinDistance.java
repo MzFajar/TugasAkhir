@@ -4,8 +4,8 @@ package com.mzfajar.tugasakhir.algoritma;
 public class LevenshteinDistance {
 
     public static int distance(String a, String b) {
-        a = a.toLowerCase();
-        b = b.toLowerCase();
+        a = a.toLowerCase(); // String Sumber
+        b = b.toLowerCase(); // String Target
         // i == 0
         int [] costs = new int [b.length() + 1];
         for (int j = 0; j < costs.length; j++)
@@ -15,12 +15,13 @@ public class LevenshteinDistance {
             costs[0] = i;
             int nw = i - 1;
             for (int j = 1; j <= b.length(); j++) {
-                int cj = Math.min(1 + Math.min(costs[j], costs[j - 1]), a.charAt(i - 1) == b.charAt(j - 1) ? nw : nw + 1);
+                // insertion, deletion, substitution
+                int cj = Math.min(1 + Math.min(costs[j], costs[j - 1]),
+                        a.charAt(i - 1) == b.charAt(j - 1) ? nw : nw + 1);
                 nw = costs[j];
                 costs[j] = cj;
             }
         }
         return costs[b.length()];
     }
-
 }

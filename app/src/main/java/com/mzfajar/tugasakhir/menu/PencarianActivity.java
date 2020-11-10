@@ -55,15 +55,7 @@ public class PencarianActivity extends AppCompatActivity {
         sumber = (bundle.getString("DataSaya"));
         getListDataQuran();
 
-       // panjang sumber
-        int [] sum = new int[sumber.length()];
-        panjangSum = 0;
-        if(sum != null) {
-            for (int p = 1; p < sum.length; p++) {
-                panjangSum++;
-            }
-            teks.setText(panjangSum + "  :  " + sumber);
-        }
+        teks.setText(sumber);
     }
 
     private void getListDataQuran(){
@@ -85,10 +77,21 @@ public class PencarianActivity extends AppCompatActivity {
                         // nilai distance
                         long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget());
                         quranModel.setDistance(distance);
-                        if(distance <= 1){ // yang sama
+                        // panjang sumber
+                        int [] sum = new int[sumber.length()];
+                        panjangSum = 0;
+                        if(sum != null) {
+                            for (int p = 1; p < sum.length; p++) {
+                                panjangSum ++;
+                            }
+                        }
+                        long panjSum = panjangSum;
+
+                        if(distance <= 2){ // hasil pencarian
                             target(quranModel);
                             showResult(quranModel);
-                        }else if(distance > 1 && distance < 10){ // yang hampir sama
+                        }
+                        else if(distance > 2 && distance < panjSum && quranList.size() <= 10){ // yang mirip mirip list kurang dari 10
                             target(quranModel);
                             quranList.add(quranModel);
                         }
@@ -119,7 +122,7 @@ public class PencarianActivity extends AppCompatActivity {
     private void showResult(QuranModel quranModel){
         tvTerjemahan.setText("Artinya : " + quranModel.getTerjemah());
         tvTeks.setText(quranModel.getText());
-        tvTarget.setText(quranModel.getTarget() + "  :  " + quranModel.getPanjTar());
+        tvTarget.setText(quranModel.getTarget()); // + "  :  " + quranModel.getPanjTar());
         tvAyat.setText(", Ayat : " + String.valueOf(quranModel.getAyat()) + ")");
         tvNamaSurat.setText("(" + quranModel.getNamaSura());
         tvDistance.setText("(Distance : " + quranModel.getDistance() + ")");
@@ -132,7 +135,7 @@ public class PencarianActivity extends AppCompatActivity {
         rvQuran.setHasFixedSize(true);
         rvQuran.setAdapter(quranAdapter);
         rvQuran.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
-        quranAdapter.setData(quranList);
+        quranAdapter.addAll(quranList);
     }
 
 

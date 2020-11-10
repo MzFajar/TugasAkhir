@@ -21,7 +21,6 @@ public class DatabaseOpenHelper {
     public static String TARGET = "target";
     public static String TEXT = "text";
     public static String TERJEMAH = "terjemah";
-  //  public static String LATIN = "latin";
 
 
     public DatabaseOpenHelper(Context context, String dbname) {
