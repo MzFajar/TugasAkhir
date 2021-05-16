@@ -4,19 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.widget.TextView;
+
 import com.mzfajar.tugasakhir.R;
 import com.mzfajar.tugasakhir.adapter.QuranAdapter;
 import com.mzfajar.tugasakhir.database.DatabaseOpenHelper;
 import com.mzfajar.tugasakhir.model.QuranModel;
 import com.mzfajar.tugasakhir.algoritma.LevenshteinDistance;
+
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 public class PencarianActivity extends AppCompatActivity {
@@ -35,7 +36,7 @@ public class PencarianActivity extends AppCompatActivity {
     private TextView tvTarget;
 
     @Override
-    protected void onCreate( Bundle savedInstanceState ) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pencarian);
         db = new DatabaseOpenHelper(PencarianActivity.this, "quran.db").openDatabase();
@@ -58,14 +59,14 @@ public class PencarianActivity extends AppCompatActivity {
         teks.setText(sumber);
     }
 
-    private void getListDataQuran(){
-        Cursor cursor = db.rawQuery("SELECT * FROM quran" , null);
+    private void getListDataQuran() {
+        Cursor cursor = db.rawQuery("SELECT * FROM quran", null);
         cursor.moveToFirst();
         List<QuranModel> quranList = new ArrayList<>();
         QuranModel quranModel;
-        if(cursor != null){
-            if(cursor.getCount() > 0){
-                do{
+        if (cursor != null) {
+            if (cursor.getCount() > 0) {
+                do {
                     quranModel = new QuranModel();
                     quranModel.setSurat(cursor.getLong(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.SURAT)));
                     quranModel.setNamaSura(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.NAMA_SURA)));
@@ -73,35 +74,34 @@ public class PencarianActivity extends AppCompatActivity {
                     quranModel.setTerjemah(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TERJEMAH)));
                     quranModel.setText(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TEXT)));
                     quranModel.setTarget(cursor.getString(cursor.getColumnIndexOrThrow(DatabaseOpenHelper.TARGET)));
-                    if(quranModel.getTarget() != null){
+                    if (quranModel.getTarget() != null) {
                         // nilai distance
                         long distance = LevenshteinDistance.distance(sumber, quranModel.getTarget());
                         quranModel.setDistance(distance);
                         // panjang sumber
-                        int [] sum = new int[sumber.length()];
+                        int[] sum = new int[sumber.length()];
                         panjangSum = 0;
-                        if(sum != null) {
+                        if (sum != null) {
                             for (int p = 1; p < sum.length; p++) {
-                                panjangSum ++;
+                                panjangSum++;
                             }
                         }
                         long panjSum = panjangSum;
 
-                        if(distance <= 2){ // hasil pencarian
+                        if (distance > 2 && distance < panjSum) { // yang mirip mirip list kurang dari 10
+                            target(quranModel);
+                            quranList.add(quranModel);
+                        } else if (distance <= 2) { // hasil pencarian
                             target(quranModel);
                             showResult(quranModel);
                         }
-                        else if(distance > 2 && distance < panjSum && quranList.size() <= 10){ // yang mirip mirip list kurang dari 10
-                            target(quranModel);
-                            quranList.add(quranModel);
-                        }
                     }
                     cursor.moveToNext();
-                }while (!cursor.isAfterLast());
+                } while (!cursor.isAfterLast());
 
-                if(quranList.size() > 0){
+                if (quranList.size() > 0) {
                     showRecyclerView(quranList);
-                }else{
+                } else {
 //                    Toast.makeText(getApplicationContext(), "no data", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -111,7 +111,7 @@ public class PencarianActivity extends AppCompatActivity {
 
     private void target(QuranModel quranModel) {
         long panjtar = 0;
-        if(quranModel.getTarget() != null) {
+        if (quranModel.getTarget() != null) {
             for (int j = 1; j < quranModel.getTarget().length(); j++) {
                 panjtar++;
             }
@@ -119,7 +119,7 @@ public class PencarianActivity extends AppCompatActivity {
         }
     }
 
-    private void showResult(QuranModel quranModel){
+    private void showResult(QuranModel quranModel) {
         tvTerjemahan.setText("Artinya : " + quranModel.getTerjemah());
         tvTeks.setText(quranModel.getText());
         tvTarget.setText(quranModel.getTarget()); // + "  :  " + quranModel.getPanjTar());
@@ -128,14 +128,14 @@ public class PencarianActivity extends AppCompatActivity {
         tvDistance.setText("(Distance : " + quranModel.getDistance() + ")");
     }
 
-    private void showRecyclerView(List<QuranModel> quranList){
+    private void showRecyclerView(List<QuranModel> quranList) {
         QuranAdapter quranAdapter = new QuranAdapter();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         rvQuran.setLayoutManager(layoutManager);
         rvQuran.setHasFixedSize(true);
         rvQuran.setAdapter(quranAdapter);
-        rvQuran.addItemDecoration(new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL));
-        quranAdapter.addAll(quranList);
+        rvQuran.addItemDecoration(new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL));
+        quranAdapter.addOrUpdate(quranList);
     }
 
 

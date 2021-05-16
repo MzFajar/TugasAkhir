@@ -8,7 +8,7 @@ import android.os.Bundle;
 
 import com.mzfajar.tugasakhir.R;
 
-public class mzActivity extends AppCompatActivity {
+public class SplashScreen extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,7 @@ public class mzActivity extends AppCompatActivity {
         protected void onPostExecute(Void aVoid) {
             super.onPostExecute(aVoid);
 
-            startActivity(new Intent(mzActivity.this, SpeechActivity.class));
+            startActivity(new Intent(SplashScreen.this, SpeechActivity.class));
             finish();
         }
     }
